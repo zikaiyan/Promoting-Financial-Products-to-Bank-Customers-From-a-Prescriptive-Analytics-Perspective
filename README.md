@@ -2,7 +2,7 @@
 Final Project - 15.095 Machine Learning Under a Modern Optimization Lens @MIT
 
 Project Member: [Zeki Yan](https://www.linkedin.com/in/zikaiyan/), [Luca-Andrei Manea](https://www.linkedin.com/in/lucaandreimanea/)
-<img src="images/cover.png" width="550" />
+<img src="images/cover.png" />
 
 
 
