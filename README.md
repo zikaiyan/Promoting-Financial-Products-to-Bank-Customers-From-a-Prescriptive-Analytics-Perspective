@@ -15,6 +15,7 @@ Project Member: [Zeki Yan](https://www.linkedin.com/in/zikaiyan/), [Luca-Andrei 
 - [Feature Engineering](#Feature-Engineering)
 - [Results and Analysis](#results-and-analysis)
 - [Business Impact](#business-impact)
+- [References](#References)
 
 ## Introduction
 
@@ -117,3 +118,10 @@ As for the distribution of products that these methods offer, the "smarter\" pre
 ![product_channel_comparison](images/product_channel_comparison.jpg)
 
 Our method notably improves the expected profit of the bank. Previously, the bank used the Greedy method to make marketing decisions. For the subset of customers (20% of total customers) we chose, the Greedy method generates profits of **\$11,323** (the average of all the corresponding models). In contrast, our best model (Prescriptive method powered by the Kernel Method) can generate a profit of **\$46,327**, which signifies an increase of **309%**. If the bank implemented our method entirely, it could generate estimated profits of **\$175K** for all 11K customers.
+
+## References
+
+1. Bertsimas, Dimitris, and Jack Dunn. "Optimal classification trees." Machine Learning 106 (2017): 1039-1082.
+2. Bertsimas, Dimitris, and Nathan Kallus. "From predictive to prescriptive analytics." Management Science 66.3 (2020): 1025-1044.
+3. Bertsimas, Dimitris, and Nihal Koduri. "Data-driven optimization: A reproducing kernel Hilbert space approach." Operations Research 70.1 (2022): 454-471.
+4. Bertsimas, Dimitris, and Kimberly Villalobos Carballo. "Multistage Stochastic Optimization via Kernels." arXiv preprint arXiv:2303.06515 (2023).
