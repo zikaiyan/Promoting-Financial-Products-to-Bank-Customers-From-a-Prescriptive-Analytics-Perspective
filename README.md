@@ -8,10 +8,10 @@ Project Member: [Zeki Yan](https://www.linkedin.com/in/zikaiyan/), [Luca-Andrei 
 ## Table of Contents
 
 - [Introduction](#Introduction)
-- [Problem Statement](#Problem Statement)
+- [Problem Statement](#Problem-Statement)
 - [Dataset](#Dataset)
 - [Methodology](#Methodology)
-- [Feature Engineering](#Feature Engineering)
+- [Feature Engineering](#Feature-Engineering)
 - [Results and Analysis](#results-and-analysis)
 - [Business Impact](#business-impact)
 
