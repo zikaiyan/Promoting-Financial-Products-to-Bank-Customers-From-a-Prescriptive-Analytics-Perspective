@@ -1,4 +1,4 @@
-# Promoting-Financial-Products-to-Bank-Customers-From-a-Prescriptive-Analytics-Perspective
+# Promoting Financial Products to Bank Customers: From a Prescriptive Analytics Perspective
 
 Final Project - 15.095 Machine Learning Under a Modern Optimization Lens @MIT
 
