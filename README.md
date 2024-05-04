@@ -3,7 +3,8 @@
 Final Project - 15.095 Machine Learning Under a Modern Optimization Lens @MIT
 
 Project Member: [Zeki Yan](https://www.linkedin.com/in/zikaiyan/), [Luca-Andrei Manea](https://www.linkedin.com/in/lucaandreimanea/)
-<img src="images/cover.png"/>
+
+![cover](images/cover.png)
 
 ## Table of Contents
 
@@ -23,21 +24,11 @@ Our project delves into a retail bank's 2016 transaction data for three products
 
 ## Problem Statement
 
-The problem consists of two stages. We need to make predictions about
-customer interest regarding the offered products and then make marketing
-Decisions based on them. The detailed demonstration is as follows:
+The problem consists of two stages. We need to predict customer interest regarding the offered products and then make marketing Decisions based on them. The detailed demonstration is as follows:
 
-1.  **Customer interest prediction**: In this stage, models need to be
-    built to predict whether (or how much) each customer will be
-    interested in each product the bank provides. The products are types
-    of bank accounts that customers can open, namely *Savings accounts*,
-    *Mortgage accounts*, and *Pension accounts*.
-
-2.  **Marketing decision making**: The second stage consists of making
-    marketing decisions based on the prediction result: deciding which product the bank should promote (or offer) to which
-    customers through which marketing channel. The channels are typical
-    ways to bring advertisements to customers. These include *gifts* 
-    in promotional offerings, email newsletters, and financial literacy seminars to engage and educate customers.
+1.  **Customer interest prediction**: In this stage, models need to be built to predict whether (or how much) each customer will be interested in each product the bank provides. The products are types of bank accounts that customers can open: Savings, Mortgage, and *Pension accounts*.
+    
+2.  **Marketing decision making**: The second stage consists of making marketing decisions based on the prediction result: deciding which product the bank should promote (or offer) to customers through which marketing channel. The channels are typical ways to bring advertisements to customers. These include *gifts* in promotional offerings, email newsletters, and financial literacy seminars to engage and educate customers.
 
 The main decisions to be made are as follows:
 
@@ -45,84 +36,45 @@ The main decisions to be made are as follows:
 
 2.  **Which product should be proposed to each customer?**
 
-3.  **Through which channel should we promote the product to the
-    customer?**
+3.  **Through which channel should we promote the product to the customer?**
 
-To solve the problem, we used the historical data of the customers before the merger, where customer behavior and additional demographic data
-Were recorded. This was used to build models and make decisions.
-Finally, the models' performances were evaluated, selecting the highest
-expected profit-achieving model to make final decisions for future
-marketing decisions.
+To solve the problem, we used the customers' historical data before the merger, where customer behavior and additional demographic data were recorded. This was used to build models and make decisions. Finally, the models' performances were evaluated, and the highest expected profit-achieving model was selected to make final decisions for future marketing decisions.
 
 ## Dataset
 
-Two datasets were used for this project. The known
-customer dataset contains both basic customer information and customer
-behavior, which is their account opening history for different types of
-bank products, while the unknown data only has basic customer
-information of the newly acquired customers. The source of these two
-datasets are the following:
+Two datasets were used for this project. The known customer dataset contains basic customer information and customer behavior, which is their account opening history for different bank products. At the same time, the unknown data only has basic customer information of the newly acquired customers. The source of these two datasets are the following:
 
 1.  **[Old Customers Dataset](https://raw.githubusercontent.com/vberaudi/utwt/master/known_behaviors.cs)**:
-    This dataset includes all the customers in 2016, with their
-    financial data and whether they bought savings, mortgage, and
-    pension accounts.
-
+    This dataset includes all the customers in 2016, with their financial data and whether they bought savings, mortgage, and pension accounts.
+    
 2.  **[Newly Acquired Customers Dataset](https://raw.githubusercontent.com/vberaudi/utwt/master/unknown_behaviors.csv)**:
-    This dataset includes the new customers in 2017 after the merger
-    with the same variables except for which accounts they bought.
+    This dataset includes the new customers in 2017 after the merger with the same variables except for which accounts they bought.
 
 ## Methodology
 
-Our project used both predictive and prescriptive approaches that given
-the observational data (customer personal and financial data), output
-the product to be sold to a customer (interest) that results in the
-the highest profit based on the marketing campaign (decision). The following
-four methods are implemented independently to make decisions:
+Our project used both predictive and prescriptive approaches that given the observational data (customer personal and financial data), output the product to be sold to a customer (interest) that results in the the highest profit based on the marketing campaign (decision). The following four methods are implemented independently to make decisions:
 
-1.  **Greedy Algorithm**: Served as baseline model. The algorithm goes
-    through all the customers, products, and channels, making
-    assignments to those demands (in terms of product interest) that are
-    not satisfied yet and ends once no more offers can be made.
+1.  **Greedy Algorithm**: Served as baseline model. The algorithm goes through all the customers, products, and channels, making assignments to those demands (in terms of product interest) that are not satisfied yet and ends once no more offers can be made.
+    
+2.  **Sample Average Approximation**: Utilizes only training set data to make decisions. This method accounts for uncertainty but not for auxiliary data.
+    
+3.  **Point Prediction**: Making predictions of customer's interests utilizing the training set data, then making decisions for customers in the test set using the information we have about them. This method accounts for auxiliary data but not for uncertainty.
+    
+4.  **Predictive Prescription**: Making predictions and decisions all at once. This method accounts for both auxiliary data and uncertainty.
 
-2.  **Sample Average Approximation**: Utilizes only training set data to
-    make decisions. This method accounts for uncertainty but not for
-    auxiliary data.
+We also chose corresponding machine learning models for each method to make predictions. The models that we have used include the following:
 
-3.  **Point Prediction**: Making predictions of customer's interests
-    utilizing the training set data, then making decisions for customers
-    in the test set using the information we have about them. This
-    method accounts for auxiliary data but not for uncertainty.
+1.  **Random Forest**: Combines the output of multiple decision trees to reach a single result. It can be used for the Greedy Algorithm, Point Prediction and Predictive Prescription method.
+    
+2.  **Optimal Classification Tree**: A classification tree that can be conducted and solved using optimization methods to gain the best structure. It can be used for the Greedy Algorithm and Point Prediction method.
+    
+3.  **Logistics Regression**: Performs classification. It can be used for the Greedy Algorithm and Point Prediction method.
+    
+4.  **K-Nearest Neighbor**: Find K nearest neighbors in the known dataset of the new incoming data points. It can be used for the Greedy Algorithm, Point Prediction, and Predictive Prescription Method.
+    
+5.  **Kernel Methods**: Local Kernel Methods, similar to *k*-NN; another way to assign weights, which also accounts for uncertainty. It can be used for the Greedy Algorithm, Point Prediction, and Predictive Prescription method.
 
-4.  **Predictive Prescription**: Making predictions and decisions all at
-    once. This method accounts for both auxiliary data and uncertainty.
-
-We also chose corresponding machine learning models for each method to
-make predictions. The models that we have used include the following:
-
-1.  **Random Forest**: Combines the output of multiple decision trees to
-    reach a single result. It can be used for the Greedy Algorithm, Point
-    Prediction and Predictive Prescription method.
-
-2.  **Optimal Classification Tree**: A classification tree that
-    can be conducted and solved using optimization methods to gain the
-    best structure. It can be used for the Greedy Algorithm and Point
-    Prediction method.
-
-3.  **Logistics Regression**: Performs classification. It can be used for
-    the Greedy Algorithm and Point Prediction method.
-
-4.  **K-Nearest Neighbor**: Find K nearest neighbors in the known
-    dataset of the new incoming data points. It can be used for the Greedy
-    Algorithm, Point Prediction, and Predictive Prescription Method.
-
-5.  **Kernel Methods**: Local Kernel Methods, similar to *k*-NN;
-    another way to assign weights, which also accounts for uncertainty. It can
-    be used for the Greedy Algorithm, Point Prediction, and Predictive
-    Prescription method.
-
-We test the performance of all the methods and models based on the test set data we split from the **[Newly Acquired Customers Dataset](https://raw.githubusercontent.com/vberaudi/utwt/master/known_behaviors.csv)** and calculate metrics based on the old customers' behaviors to assess model performance. These metrics include *revenue*, *budget used*, *profit*, *number of customers served*, *how many times each product is
-offered*, and *how many times each marketing channel is used*.
+We test the performance of all the methods and models based on the test set data we split from the **[Newly Acquired Customers Dataset](https://raw.githubusercontent.com/vberaudi/utwt/master/known_behaviors.csv)** and calculate metrics based on the old customers' behaviors to assess model performance. These metrics include *revenue*, *budget used*, *profit*, *number of customers served*, *how many times each product is offered*, and *how many times each marketing channel is used*.
 
 ## Feature Engineering
 
@@ -146,15 +98,13 @@ The scatter plot visualizes the relationship for each product of their most corr
 
 For the four methods, the ranking (based on profit) of the models' performances is as follows:
 
--   *Prescriptive* $>$ *Point Prediction* $>$ *Greedy* $>$ *Sample
-    Average Approximation*
+-   *Prescriptive* $>$ *Point Prediction* $>$ *Greedy* $>$ *Sample Average Approximation*
 
 Note that the Sample Average Method generates empty results because it is infeasible in this case since the same decision is prescribed to all customers, which is not feasible under the budget constraint.
 
 For the different prediction models, the ranking (based on profit) is as follows:
 
--   Kernel Method $>$ *k*-NN $>$ Logistics Regression $>$ OCT $>$
-    XGBoost $>$ Random Forest
+-   Kernel Method $>$ *k*-NN $>$ Logistics Regression $>$ OCT $>$ XGBoost $>$ Random Forest
 
 Regarding the ability to utilize the budget and serve customers, out of all the methods we applied, only prescriptive methods utilized the entire budget ($25K) to promote products. Point Prediction used nearly all of the budget, and the Greedy Method used the least. One reason is that compared to the prescriptive method, the other methods do not consider either the information in the auxiliary variables or the uncertainty of decision-making, which results in imperfect solutions when applying these methods. The second reason is that compared to the k-NN and Kernel Methods; other prediction models are not good at predicting the interest variables. In most cases, they predicted less customer interest than was apparent in the test set. Because of this, the optimization model cannot allocate all of the budget, as there would be no gain.
 
